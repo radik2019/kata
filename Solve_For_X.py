@@ -24,12 +24,15 @@ def eq(es):
 
 
     elif es1.index("=") == len(es1) - 2:
+        es2 = " ".join(es1[:len(es1) - 2]) + " - " + es1[-1] + " = 0"
+        print(es2)
+
         print(-2)
 
 
 
 
-print(eq('20 =  x+   23  - 5 +   5'))
+print(eq('x+   23  -40 +   5 = 89'))
 
 def calc(stri1):
     dat1 = re.findall(r"[0-9()+-/*=]", stri1)

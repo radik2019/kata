@@ -6,13 +6,33 @@ kata's name: Solvwe For X
 
 """
 
-def solve_for_x(equation):
-    pass
-    # print(solve_for_x('x - 5 = 20'), 25)
-    # print(solve_for_x('20 = 5 * x - 5'), 5)
 
-def calc(stri):
-    dat1 = re.findall(r"[0-9()+-/*]", stri)
+def solve_for_x(equation):
+    return equation
+    # print(solve_for_x('x - 5 = 20'), 25)
+# print(solve_for_x('20 = 5 * x - 5'), 5)
+
+
+def eq(es):
+    dat1 = re.findall(r"[0-9x()+-/*=]", es)
+    es1 = re.findall(r"\d+|\D", "".join(dat1))
+
+    print(es1)
+    if es1.index("=") == 1:
+        es2 = " ".join(es1[2:]) + " - " + es1[0] + " = 0"
+        print(es2)
+
+
+    elif es1.index("=") == len(es1) - 2:
+        print(-2)
+
+
+
+
+print(eq('20 =  x+   23  - 5 +   5'))
+
+def calc(stri1):
+    dat1 = re.findall(r"[0-9()+-/*=]", stri1)
     expr = re.findall(r"\d+|\D", "".join(dat1))
 
     for i in range(len(expr)):
@@ -46,10 +66,9 @@ def calc(stri):
     return expr[0]
 
 
-print(calc(input(":  ")))
+# print(calc(input(":  ")))
 
 
 
 
-
-
+s = "5 * x - 5 = 20"

@@ -1,4 +1,4 @@
-
+import re
 """
 link: https://www.codewars.com/kata/59c2e2a36bddd2707e000079
 
@@ -11,8 +11,10 @@ def solve_for_x(equation):
     # print(solve_for_x('x - 5 = 20'), 25)
     # print(solve_for_x('20 = 5 * x - 5'), 5)
 
-def calc(expr):
-    expr = expr.split(" ")
+def calc(stri):
+    dat1 = re.findall(r"[0-9()+-/*]", stri)
+    expr = re.findall(r"\d+|\D", "".join(dat1))
+
     for i in range(len(expr)):
         if expr[i].isdigit():
             expr[i] = float(expr[i])
@@ -44,4 +46,10 @@ def calc(expr):
     return expr[0]
 
 
-print(calc("2 + 2 * 2 * 2 / 2 / 2 / 2 * 56 + 23 - 34 - 45 + 120 * 66 / 34"))
+print(calc(input(":  ")))
+
+
+
+
+
+

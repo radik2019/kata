@@ -25,6 +25,7 @@ def eq(es):
 
     elif es1.index("=") == len(es1) - 2:
         print(-2)
+        print('yeahy')
 
 
 

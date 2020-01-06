@@ -22,15 +22,9 @@ def eq(es):
         es2 = " ".join(es1[2:]) + " - " + es1[0] + " = 0"
         print(es2)
 
-
     elif es1.index("=") == len(es1) - 2:
         es2 = " ".join(es1[:len(es1) - 2]) + " - " + es1[-1] + " = 0"
         print(es2)
-
-        print(-2)
-
-
-
 
 print(eq('x+   23  -40 +   5 = 89'))
 

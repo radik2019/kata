@@ -13,26 +13,41 @@ def solve_for_x(equation):
 # print(solve_for_x('20 = 5 * x - 5'), 5)
 
 
-def eq(es):
+def eq(es, es2=""):
     dat1 = re.findall(r"[0-9x()+-/*=]", es)
     es1 = re.findall(r"\d+|\D", "".join(dat1))
-
-    print(es1)
     if es1.index("=") == 1:
         es2 = " ".join(es1[2:]) + " - " + es1[0] + " = 0"
-        print(es2)
-
-
     elif es1.index("=") == len(es1) - 2:
         es2 = " ".join(es1[:len(es1) - 2]) + " - " + es1[-1] + " = 0"
-        print(es2)
-
-        print(-2)
+    return es2
 
 
+def eq1(es):
+    df = eq(es).split(" ")
+    print(df)
+    return df.index("x")
 
 
-print(eq('x+   23  -40 +   5 = 89'))
+def where(lst):
+    if lst.index("x") == 0:
+        if lst[lst.index("x") + 1] == "+":
+            print("plus")
+        elif lst[lst.index("x") + 1] == "-":
+            print("minus")
+    elif lst.index("x") != 0:
+        if lst[lst.index("x") + 1] == "+":
+            print(lst[lst.index("x") + 2:])
+            return "plus"
+        elif lst[lst.index("x") + 1] == "-":
+            print(lst[lst.index("x") + 2:])
+            return "minus"
+
+
+print(where(['29', '+', '23', '-', '40', '+', 'x', '-', '50', '-', '89', '=', '0']))
+print(where(['x', '+', '29', '+', '23', '-', '40', '-', '50', '-', '89', '=', '0']))
+
+# print(eq1("x - 29 + 23- 40  -  50 = 89"))
 
 def calc(stri1):
     dat1 = re.findall(r"[0-9()+-/*=]", stri1)
@@ -71,7 +86,3 @@ def calc(stri1):
 
 # print(calc(input(":  ")))
 
-
-
-
-s = "5 * x - 5 = 20"

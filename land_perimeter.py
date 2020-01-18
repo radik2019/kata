@@ -4,25 +4,51 @@
 link: https://www.codewars.com/kata/5839c48f0cf94640a20001d3
 name: Land perimeter
 """
-lst = [[1, 2], [3, 4], [4, 5], [6, 7]]
+lst =[
+	"OXOOOX", "OXOXOO", "XXOOOX", "OXXXOO", "OOXOOX", "OXOOOO",
+	"OOXOOX", "OOXOOO", "OXOOOO", "OXOOXX"]
 
-def walk_true(lst, ind_i, ind_k):
+
+def walk_true(lst, item, n=0):
+	i = item[0]
+	k = item[1]
 	try:
-		lst[ind_i][ind_k]
+		direct = [
+			lst[i - 1][k],
+			lst[i + 1][k],
+			lst[i][k - 1],
+			lst[i][k + 1],
+		]
 	except IndexError:
-		return False
-	return True
+		pass
+	for j in direct:
+		try:
+			if j == 'X':
+				n += 0
+			else:
+				n += 1
+		except IndexError:
+			n += 1
+	return n
 
-print(walk_true(lst, 2, 5))
+
+def select_x(lst):
+	list_x = []
+	for i in range(len(lst)):
+		for k in range(len(lst[i])):
+			if lst[i][k] == "X":
+				list_x.append([i, k])
+	return list_x
 
 
 def land_perimeter(arr):
+	l_per = 0
+	lst = select_x(arr)
+	for j in lst:
 
+		l_per += walk_true(arr, j)
+	return l_per
 
-
-	def deep_search(lst, ind_i, ind_k):
-		if walk_true(lst, ind_i, ind_k):
-			pass
 
 
 

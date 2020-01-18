@@ -4,16 +4,25 @@
 link: https://www.codewars.com/kata/5839c48f0cf94640a20001d3
 name: Land perimeter
 """
+lst = [[1, 2], [3, 4], [4, 5], [6, 7]]
+
+def walk_true(lst, ind_i, ind_k):
+	try:
+		lst[ind_i][ind_k]
+	except IndexError:
+		return False
+	return True
+
+print(walk_true(lst, 2, 5))
 
 
 def land_perimeter(arr):
-	n = 0
-	for i in arr:
-		for k in i:
-			if k == "X":
-				n += 1
-	return n
 
+
+
+	def deep_search(lst, ind_i, ind_k):
+		if walk_true(lst, ind_i, ind_k):
+			pass
 
 
 

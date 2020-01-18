@@ -12,23 +12,39 @@ lst =[
 def walk_true(lst, item, n=0):
 	i = item[0]
 	k = item[1]
+
 	try:
-		direct = [
-			lst[i - 1][k],
-			lst[i + 1][k],
-			lst[i][k - 1],
-			lst[i][k + 1],
-		]
-	except IndexError:
-		pass
-	for j in direct:
-		try:
-			if j == 'X':
-				n += 0
-			else:
-				n += 1
-		except IndexError:
+		if lst[i][k + 1] == 'X':
+			n += 0
+		else:
 			n += 1
+	except IndexError:
+		n += 1
+
+	try:
+		if lst[i][k - 1] == 'X':
+			n += 0
+		else:
+			n += 1
+	except IndexError:
+		n += 1
+
+	try:
+		if lst[i + 1][k] == 'X':
+			n += 0
+		else:
+			n += 1
+	except IndexError:
+		n += 1
+
+	try:
+		if lst[i - 1][k] == 'X':
+			n += 0
+		else:
+			n += 1
+	except IndexError:
+		n += 1
+
 	return n
 
 
@@ -52,18 +68,21 @@ def land_perimeter(arr):
 
 
 
-print(land_perimeter([
-	"OXOOOX", "OXOXOO", "XXOOOX", "OXXXOO", "OOXOOX", "OXOOOO",
-	"OOXOOX", "OOXOOO", "OXOOOO", "OXOOXX"]))
+print(land_perimeter(["OXOOOX", "OXOXOO", "XXOOOX", "OXXXOO", "OOXOOX", "OXOOOO", "OOXOOX", "OOXOOO", "OXOOOO", "OXOOXX"]))
 
 
-"""
-Test.describe("Basic tests")
 
-Test.assert_equals(land_perimeter(["OXOOOX", "OXOXOO", "XXOOOX", "OXXXOO", "OOXOOX", "OXOOOO", "OOXOOX", "OOXOOO", "OXOOOO", "OXOOXX"]), "Total land perimeter: 60")
-Test.assert_equals(land_perimeter(["OXOOO", "OOXXX", "OXXOO", "XOOOO", "XOOOO", "XXXOO", "XOXOO", "OOOXO", "OXOOX", "XOOOO", "OOOXO"]), "Total land perimeter: 52")
-Test.assert_equals(land_perimeter(["XXXXXOOO", "OOXOOOOO", "OOOOOOXO", "XXXOOOXO", "OXOXXOOX"]), "Total land perimeter: 40")
-Test.assert_equals(land_perimeter(["XOOOXOO", "OXOOOOO", "XOXOXOO", "OXOXXOO", "OOOOOXX", "OOOXOXX", "XXXXOXO"]), "Total land perimeter: 54")
-Test.assert_equals(land_perimeter(["OOOOXO", "XOXOOX", "XXOXOX", "XOXOOO", "OOOOOO", "OOOXOO", "OOXXOO"]), "Total land perimeter: 40")
 
-"""
+print(land_perimeter(["OXOOOX", "OXOXOO", "XXOOOX", "OXXXOO", "OOXOOX", "OXOOOO", "OOXOOX", "OOXOOO", "OXOOOO", "OXOOXX"]), 60)
+print(land_perimeter(["OXOOO", "OOXXX", "OXXOO", "XOOOO", "XOOOO", "XXXOO", "XOXOO", "OOOXO", "OXOOX", "XOOOO", "OOOXO"]), 52)
+print(land_perimeter(["XXXXXOOO", "OOXOOOOO", "OOOOOOXO", "XXXOOOXO", "OXOXXOOX"]), 40)
+print(land_perimeter(["XOOOXOO", "OXOOOOO", "XOXOXOO", "OXOXXOO", "OOOOOXX", "OOOXOXX", "XXXXOXO"]), 54)
+print(land_perimeter(["OOOOXO", "XOXOOX", "XXOXOX", "XOXOOO", "OOOOOO", "OOOXOO", "OOXXOO"]), 40)
+
+
+
+df = ["OXOOO", "OOXXX", "OXXOO", "XOOOO", "XOOOO", "XXXOO", "XOXOO", "OOOXO", "OXOOX", "XOOOO", "OOOXO"]
+for i in range(len(df)):
+	print(end="\n")
+	for k in range(len(df[i])):
+		print(df[i][k], end=" ")

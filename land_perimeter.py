@@ -9,26 +9,25 @@ name: Land perimeter
 def walk_true(lst, item, n=0):
 	i = item[0]
 	k = item[1]
-
 	try:
 		# riht
 		if lst[i][k + 1] == 'X':
-
 			n += 0
 		else:
 			n += 1
 	except IndexError:
 		n += 1
-
-	try:
-		# left
-		if lst[i][k - 1] == 'X':
-			n += 0
-		else:
-			n += 1
-	except IndexError:
+	if k == 0:
 		n += 1
-
+	else:
+		try:
+			# left
+			if lst[i][k - 1] == 'X':
+				n += 0
+			else:
+				n += 1
+		except IndexError:
+			n += 1
 	try:
 		# down
 		if lst[i + 1][k] == 'X':
@@ -37,16 +36,17 @@ def walk_true(lst, item, n=0):
 			n += 1
 	except IndexError:
 		n += 1
-
-	try:
-		# up
-		if lst[i - 1][k] == 'X':
-			pass
-		else:
-			n += 1
-	except IndexError:
+	if i == 0:
 		n += 1
-
+	else:
+		try:
+			# up
+			if lst[i - 1][k] == 'X':
+				pass
+			else:
+				n += 1
+		except IndexError:
+			n += 1
 	return n
 
 
@@ -60,15 +60,11 @@ def select_x(lst):
 
 
 def land_perimeter(arr):
-	for i in range(len(arr)):
-		print(end="\n")
-		for k in range(len(arr[i])):
-			print(arr[i][k], end=" ")
 	l_per = 0
 	lst = select_x(arr)
 	for j in lst:
-
 		l_per += walk_true(arr, j)
+	l_per = "Total land perimeter: {}".format(l_per)
 	return l_per
 
 
@@ -82,11 +78,11 @@ def land_perimeter(arr):
 
 
 
-# print(land_perimeter(["OXOOOX", "OXOXOO", "XXOOOX", "OXXXOO", "OOXOOX", "OXOOOO", "OOXOOX", "OOXOOO", "OXOOOO", "OXOOXX"]), 60)
-# print(land_perimeter(["OXOOO", "OOXXX", "OXXOO", "XOOOO", "XOOOO", "XXXOO", "XOXOO", "OOOXO", "OXOOX", "XOOOO", "OOOXO"]), 52)
+print(land_perimeter(["OXOOOX", "OXOXOO", "XXOOOX", "OXXXOO", "OOXOOX", "OXOOOO", "OOXOOX", "OOXOOO", "OXOOOO", "OXOOXX"]), 60)
+print(land_perimeter(["OXOOO", "OOXXX", "OXXOO", "XOOOO", "XOOOO", "XXXOO", "XOXOO", "OOOXO", "OXOOX", "XOOOO", "OOOXO"]), 52)
 print(land_perimeter(["XXXXXOOO", "OOXOOOOO", "OOOOOOXO", "XXXOOOXO", "OXOXXOOX"]), 40)
-# print(land_perimeter(["XOOOXOO", "OXOOOOO", "XOXOXOO", "OXOXXOO", "OOOOOXX", "OOOXOXX", "XXXXOXO"]), 54)
-# print(land_perimeter(["OOOOXO", "XOXOOX", "XXOXOX", "XOXOOO", "OOOOOO", "OOOXOO", "OOXXOO"]), 40)
+print(land_perimeter(["XOOOXOO", "OXOOOOO", "XOXOXOO", "OXOXXOO", "OOOOOXX", "OOOXOXX", "XXXXOXO"]), 54)
+print(land_perimeter(["OOOOXO", "XOXOOX", "XXOXOX", "XOXOOO", "OOOOOO", "OOOXOO", "OOXXOO"]), 40)
 
 
 

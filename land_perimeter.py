@@ -7,8 +7,7 @@ name: Land perimeter
 
 
 def walk_true(lst, item, n=0):
-	i = item[0]
-	k = item[1]
+	i, k = item[0], item[1]
 	try:
 		# riht
 		if lst[i][k + 1] != 'X': n += 1

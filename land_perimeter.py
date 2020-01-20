@@ -10,22 +10,11 @@ def walk_true(lst, item, n=0):
 	i, k = item[0], item[1]
 	try:
 		# riht
-
-		if lst[i][k + 1] == 'X': n += 0
-		else: n += 1
 		if lst[i][k + 1] != 'X': n += 1
 	except IndexError: n += 1
 	if k == 0: n += 1
 	else:
 		try:
-			# left
-			if lst[i][k - 1] == 'X': n += 0
-			else: n += 1
-		except IndexError:n += 1
-	try:
-		# down
-		if lst[i + 1][k] == 'X': n += 0
-		else: n += 1
 			if lst[i][k - 1] == 'X': n += 0 # left
 			else: n += 1
 		except IndexError: n += 1
@@ -38,9 +27,6 @@ def walk_true(lst, item, n=0):
 	else:
 		#up
 		try:
-			# up
-			if lst[i - 1][k] == 'X':pass
-			else: n += 1
 			if lst[i - 1][k] != 'X': n += 1
 		except IndexError: n += 1
 	return n
@@ -57,12 +43,7 @@ def select_x(lst):
 def land_perimeter(arr, l_per=0):
 	lst = select_x(arr)
 	for j in lst: l_per += walk_true(arr, j)
-<<<<<<< HEAD
-	l_per = "Total land perimeter: {}".format(l_per)
-	return l_per
-=======
 	return "Total land perimeter: {}".format(l_per)
->>>>>>> 01b4430656da26cb4dffaa8d8dffadfdd9610db7
 
 
 # lst =[

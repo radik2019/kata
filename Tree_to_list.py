@@ -18,7 +18,7 @@ def tree_to_list(tree_root, lst=[]):
 		lst.append(k.data)
 	for i in tree_root.child_nodes:
 		tree_to_list(i)
-	return lst
+	return [tree_root.data] + lst
 
 
 

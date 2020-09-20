@@ -17,16 +17,26 @@ the subsequences(of length 3) are (2,3,4) (2,4,5) (2,3,5) (3,4,5)
 product_sum = (2*3*4) + (2*3*5) + (2*4*5) + (3*4*5) #=> 154
 
 """
-from itertools import permutations
+from itertools import combinations
 
-print(list(permutations([2,6,9], 3)))
+df = [[2, 3], [2, 4], [2, 3], [3, 4], [2, 4], [3, 4]]
 
+
+def moltipl(lst):
+    var = 1
+    for i in lst:
+        var *= i
+    return var
+    
+    
 def product_sum(a, m):
-    # your code here
-    pass
+ 
+    lst2 = list(combinations(a, m))
+    return sum(list(map(moltipl, lst2)))
+  
 
 
-
+print(product_sum([2,3,4,5],3))
 
 
 
@@ -48,4 +58,4 @@ tc = [
 
 
 for arr, m, res in tc:
-    print(product_sum(arr,m), res, 'Wrong Value')
+    print(product_sum(arr,m), res)

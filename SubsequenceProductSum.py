@@ -5,23 +5,21 @@ name: Subsequence Product Sum
 Given an array of integers and an integer m, return the sum of the product of its subsequences of length m.
 
 Ex1:
-
 a = [1, 2, 3]
 m = 2
 the subsequences(of length 2) are (1,2) (1,3) (2,3), you should multiply the numbers of each subsequence and take their sum
-
 product_sum = (1*2) + (1*3) + (2*3) #=> 11
-Ex2:
 
+Ex2:
 a = [2,3,4,5]
 m = 3
-
 the subsequences(of length 3) are (2,3,4) (2,4,5) (2,3,5) (3,4,5)
-
 product_sum = (2*3*4) + (2*3*5) + (2*4*5) + (3*4*5) #=> 154
 
 """
+from itertools import permutations
 
+print(list(permutations([2,6,9], 3)))
 
 def product_sum(a, m):
     # your code here
